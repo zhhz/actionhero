@@ -1,6 +1,6 @@
 exports.action = {
-  name:                   'showDocumentation',
-  description:            'return API documentation',
+  name:                   'resources',
+  description:            'documentation: Resources listing',
   blockedConnectionTypes: [],
   outputExample:          {},
   matchExtensionMimeType: false,

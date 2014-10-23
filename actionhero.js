@@ -58,7 +58,6 @@ actionhero.prototype.initialize = function(params, callback){
     'cache',
     'connections',
     'actions',
-    'documentation',
     'actionProcessor',
     'params',
     'staticFile',
@@ -66,6 +65,7 @@ actionhero.prototype.initialize = function(params, callback){
     'resque',
     'tasks',
     'routes',
+    'documentation',
     'genericServer',
     'servers',
     'specHelper'

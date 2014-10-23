@@ -37,6 +37,10 @@ exports.default = {
       ]
       
       ---------------------- */
+
+      all: [
+        { path: '/randomNumber', action: 'randomNumber' },
+      ]
       
     }
   }

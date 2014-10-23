@@ -3,6 +3,7 @@ exports.default = {
     return {
       apiVersion: '0.0.1',
       serverName: 'actionhero API',
+      description: 'an actionhero API project',
       // id can be set here, or it will be generated dynamically.
       //  Be sure that every server you run has a unique ID (which will happen when generated dynamically)
       //  id: 'myActionHeroServer',
