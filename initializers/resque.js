@@ -1,4 +1,7 @@
-var NR = require('node-resque');
+// var NR = require('node-resque');
+import {connection, queue, worker, multiWorker, scheduler} from '../../utils/node-resque';
+
+const NR = { connection, queue, worker, multiWorker, scheduler };
 
 module.exports = {
   startPriority: 200,
@@ -59,7 +62,7 @@ module.exports = {
       startMultiWorker: function(callback){
         var self = this;
     		self.verbose = api.config.tasks.verbose;
-        
+
         self.multiWorker = new NR.multiWorker({
           connection:             api.resque.connectionDetails,
           queues:                 api.config.tasks.queues,
@@ -83,11 +86,11 @@ module.exports = {
 
         self.multiWorker.on('failure',           function(workerId, queue, job, failure){ api.exceptionHandlers.task(failure, queue, job); })
         self.multiWorker.on('error',             function(workerId, queue, job, error){   api.exceptionHandlers.task(error, queue, job);   })
-        
+
         // multiWorker emitters
         self.multiWorker.on('internalError',     function(error){                         api.log(error, 'error'); })
         self.multiWorker.on('multiWorkerAction', function(verb, delay){                   api.log('*** checked for worker status: ' + verb + ' (event loop delay: ' + delay + 'ms)', 'trace'); })
-        
+
         if(api.config.tasks.minTaskProcessors > 0){
           self.multiWorker.start(function(){
             if(typeof callback === 'function'){ callback(); }
